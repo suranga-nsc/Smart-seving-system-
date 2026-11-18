@@ -352,10 +352,6 @@
       cursor: pointer;
     }
 
-    .voice-btn.listening {
-      background: #dc2626;
-    }
-
     /* Lists */
     .item-list {
       margin-top: 16px;
@@ -491,8 +487,20 @@
     .lock-box p {
       font-size: 16px;
       color: #334155;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       line-height: 1.5;
+    }
+
+    .req-badge {
+      background: #f1f5f9;
+      border: 2px dashed #059669;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 19px;
+      font-weight: 900;
+      color: #064e3b;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
     }
 
     .wa-btn {
@@ -505,7 +513,7 @@
       font-size: 17px;
       font-weight: 800;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     @media print {
@@ -538,7 +546,6 @@
         <div class="family-banner">
           <svg viewBox="0 0 420 115" xmlns="http://www.w3.org/2000/svg">
             <rect width="420" height="115" rx="14" fill="none"/>
-            <!-- Sun & Coins -->
             <circle cx="375" cy="26" r="16" fill="#fbbf24"/>
             <text x="375" y="31" font-size="13" font-weight="bold" fill="#78350f" text-anchor="middle">Rs</text>
             <circle cx="42" cy="28" r="14" fill="#34d399"/>
@@ -650,7 +657,7 @@
         </div>
         <div class="btn-row">
           <button class="action-btn" onclick="addIncome()">+ එකතු කරන්න</button>
-          <button class="voice-btn" id="voiceIncBtn" onclick="startVoice('income')">🎤 Voice</button>
+          <button class="voice-btn" onclick="startVoice('income')">🎤 Voice</button>
         </div>
         <div class="item-list" id="incomeList"></div>
       </div>
@@ -692,7 +699,7 @@
         </div>
         <div class="btn-row">
           <button class="action-btn" onclick="addGrocery()">+ බඩු ලැයිස්තුවට</button>
-          <button class="voice-btn" id="voiceGrocBtn" onclick="startVoice('grocery')">🎤 Voice</button>
+          <button class="voice-btn" onclick="startVoice('grocery')">🎤 Voice</button>
         </div>
         <div class="item-list" id="groceryList"></div>
       </div>
@@ -717,7 +724,7 @@
         </div>
         <div class="btn-row">
           <button class="action-btn" onclick="addExpense()">+ වියදම සටහන් කරන්න</button>
-          <button class="voice-btn" id="voiceExpBtn" onclick="startVoice('expense')">🎤 Voice</button>
+          <button class="voice-btn" onclick="startVoice('expense')">🎤 Voice</button>
         </div>
         <div class="item-list" id="expenseList"></div>
       </div>
@@ -801,13 +808,14 @@
     </div>
   </div>
 
-  <!-- 4-MINUTE LOCK OVERLAY -->
+  <!-- 4-MINUTE LOCK OVERLAY (SLOT 01 CRYPTOGRAPHIC SYNC) -->
   <div class="lock-overlay" id="lockOverlay">
     <div class="lock-box">
       <h2>🔒 පරීක්ෂණ කාලය අවසන් (4 Mins)</h2>
       <p><strong>NSC Smart Saver</strong> දිගටම භාවිතා කිරීමට ඔබගේ ස්ථිර සක්‍රීය කිරීමේ කේතය (Activation Code) ඇතුළත් කරන්න.</p>
+      <div class="req-badge" id="displayReqId">Request ID: NSC-0000</div>
       <div class="form-group">
-        <input type="text" id="unlockCodeInput" placeholder="කේතය මෙහි ටයිප් කරන්න (SUR-XXXXXX)" style="text-align:center; text-transform:uppercase;" />
+        <input type="text" id="unlockCodeInput" placeholder="කේතය මෙහි ටයිප් කරන්න (NSC-XXXXXXXX)" style="text-align:center; text-transform:uppercase;" />
       </div>
       <button class="action-btn" style="width:100%;" onclick="verifyUnlockCode()">🔓 ඇතුළු වන්න (Unlock)</button>
       <hr style="margin:16px 0; border:1px solid #e2e8f0;" />
@@ -817,7 +825,7 @@
   </div>
 
   <script>
-    // Safe Storage Engine (Never crashes in restricted HTML Viewers)
+    // Safe Storage Engine
     var memoryStore = {};
     var safeStorage = {
       getItem: function(k) {
@@ -828,7 +836,12 @@
       }
     };
 
-    // Default App State
+    // Slot 01 Master Key Generator Configuration (100% Synced)
+    var SLOT_CONFIG = {
+      prefix: 'NSC',
+      salt: 'SUR_SALT_01_8942'
+    };
+
     var defaultState = {
       carriedForward: 0,
       incomes: [],
@@ -851,7 +864,7 @@
     var appState = JSON.parse(JSON.stringify(defaultState));
 
     function loadState() {
-      var saved = safeStorage.getItem('nsc_smart_saver_v1');
+      var saved = safeStorage.getItem('nsc_smart_saver_slot01_v1');
       if (saved) {
         try {
           var parsed = JSON.parse(saved);
@@ -860,13 +873,14 @@
       }
       if (!appState.requestId) {
         var rnd = Math.floor(1000 + Math.random() * 9000);
-        appState.requestId = 'NSC-' + rnd;
+        appState.requestId = SLOT_CONFIG.prefix + '-' + rnd;
         saveState();
       }
+      document.getElementById('displayReqId').innerText = 'Request ID: ' + appState.requestId;
     }
 
     function saveState() {
-      safeStorage.setItem('nsc_smart_saver_v1', JSON.stringify(appState));
+      safeStorage.setItem('nsc_smart_saver_slot01_v1', JSON.stringify(appState));
       renderAll();
     }
 
@@ -940,7 +954,6 @@
       document.getElementById('totalIncomeDisplay').innerText = 'Rs. ' + fin.totalAvailablePool.toLocaleString();
       document.getElementById('lockedJarsDisplay').innerText = 'Rs. ' + fin.totalLockedJars.toLocaleString();
 
-      // Profile Badge
       var badge = document.getElementById('profileBadge');
       if (appState.profileImg) {
         badge.innerHTML = '<img src="' + appState.profileImg + '" alt="Profile" />';
@@ -989,7 +1002,7 @@
         grocList.innerHTML += '<div class="list-card"><div class="list-card-info"><strong>' + g.name + '</strong><small>Rs. ' + Number(g.price).toLocaleString() + '</small></div><button class="del-btn" onclick="deleteGrocery(' + g.id + ')">×</button></div>';
       });
 
-      // Expenses Dropdown & List
+      // Expenses
       var expSource = document.getElementById('expSource');
       expSource.innerHTML = '<option value="free">නිදහස් ඉතිරි මුදලින් (Free Wallet)</option>';
       appState.allocations.forEach(function(a) {
@@ -1179,7 +1192,26 @@
       window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
     }
 
-    // 4-Minute Auto Lock & Secret WhatsApp Key System
+    // Exact Cryptographic Hash Verification (Matches Master Key Generator Slot 01)
+    function computeExpectedCryptoKey(rawReqId) {
+      var cleanNum = rawReqId.replace(/\D/g, '');
+      if (!cleanNum) return '';
+      var combined = SLOT_CONFIG.salt + '::' + cleanNum + '::MA_SURANGA';
+      var h1 = 0x811c9dc5;
+      var h2 = 0x1b873593;
+      for (var i = 0; i < combined.length; i++) {
+        var ch = combined.charCodeAt(i);
+        h1 ^= ch;
+        h1 = Math.imul(h1, 0x01000193);
+        h2 ^= (ch + i * 17);
+        h2 = Math.imul(h2, 0x85ebca6b);
+      }
+      var partA = Math.abs(h1 >>> 0).toString(36).toUpperCase().padStart(4, 'X').slice(0, 4);
+      var partB = Math.abs(h2 >>> 0).toString(36).toUpperCase().padStart(4, '9').slice(0, 4);
+      return SLOT_CONFIG.prefix + '-' + partA + partB;
+    }
+
+    // 4-Minute Trial Timer
     var secondsLeft = 240; // 4 minutes
     function startTrialTimer() {
       if (appState.unlocked) {
@@ -1203,28 +1235,21 @@
       }, 1000);
     }
 
-    function computeSecretKey(reqId) {
-      var num = parseInt(reqId.replace(/\D/g, ''), 10) || 1234;
-      var secret = (num * 7) + 3915;
-      return 'SUR-' + secret;
-    }
-
     function requestWhatsAppCode() {
-      var key = computeSecretKey(appState.requestId);
       var msg = 'Hello MA Suranga, please activate my *NSC Smart Saver* app.\n' +
-                'Request ID: *' + appState.requestId + '*\n' +
-                'Ref Key: ' + key;
+                'App Slot: *Slot 01 (NSC Smart Saver)*\n' +
+                'Request ID: *' + appState.requestId + '*';
       window.open('https://wa.me/94784693750?text=' + encodeURIComponent(msg), '_blank');
     }
 
     function verifyUnlockCode() {
       var entered = document.getElementById('unlockCodeInput').value.trim().toUpperCase();
-      var expected = computeSecretKey(appState.requestId);
-      if (entered === expected) {
+      var expected = computeExpectedCryptoKey(appState.requestId);
+      if (entered && entered === expected) {
         appState.unlocked = true;
         saveState();
         document.getElementById('lockOverlay').classList.remove('active');
-        alert('✅ සාර්ථකව සක්‍රීය විය! (Activated)');
+        alert('✅ සාර්ථකව සක්‍රීය විය! (Activated Permanently)');
       } else {
         alert('❌ වැරදි කේතයකි. කරුණාකර නිවැරදි කේතය ඇතුළත් කරන්න.');
       }
