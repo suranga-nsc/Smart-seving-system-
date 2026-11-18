@@ -7,7 +7,7 @@
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #064e3b 0%, #065f46 45%, #047857 100%);
-      --card-bg: rgba(255, 255, 255, 0.96);
+      --card-bg: rgba(255, 255, 255, 0.97);
       --gold: #f59e0b;
       --gold-dark: #d97706;
       --emerald: #059669;
@@ -34,7 +34,7 @@
 
     .app-container {
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.25);
@@ -45,7 +45,6 @@
       overflow: hidden;
     }
 
-    /* Watermark */
     .watermark {
       position: absolute;
       top: 50%;
@@ -69,11 +68,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(6, 78, 59, 0.85);
-      border: 1px solid rgba(245, 158, 11, 0.4);
+      background: rgba(6, 78, 59, 0.88);
+      border: 1px solid rgba(245, 158, 11, 0.45);
       padding: 12px 16px;
       border-radius: 20px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #fff;
     }
 
@@ -81,7 +80,6 @@
       font-size: 22px;
       font-weight: 800;
       color: #fbbf24;
-      letter-spacing: 0.3px;
     }
 
     .brand-info p {
@@ -92,13 +90,13 @@
     }
 
     .profile-badge {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: linear-gradient(135deg, #fbbf24, #d97706);
       color: #064e3b;
       font-weight: 900;
-      font-size: 18px;
+      font-size: 17px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -117,88 +115,115 @@
     /* Family Banner */
     .family-banner {
       background: linear-gradient(135deg, #ecfdf5 0%, #fef3c7 100%);
-      border-radius: 20px;
-      padding: 12px;
-      margin-bottom: 14px;
+      border-radius: 18px;
+      padding: 8px 10px;
+      margin-bottom: 12px;
       border: 2px solid rgba(245, 158, 11, 0.5);
       text-align: center;
     }
 
     .family-banner svg {
       width: 100%;
-      max-height: 115px;
+      max-height: 98px;
       display: block;
       margin: 0 auto;
     }
 
-    /* Large Wallet Card */
+    /* DETAILED WALLET CARD */
     .wallet-card {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       border: 2px solid #fbbf24;
       border-radius: 22px;
-      padding: 20px 18px;
+      padding: 16px;
       color: #fff;
-      margin-bottom: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      margin-bottom: 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     .wallet-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .wallet-label {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #fcd34d;
     }
 
     .trial-badge {
-      background: rgba(245, 158, 11, 0.2);
+      background: rgba(245, 158, 11, 0.22);
       color: #fbbf24;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 12px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
     }
 
     .wallet-amount {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 900;
       color: #ffffff;
-      margin: 6px 0 12px 0;
+      margin: 4px 0 12px 0;
+      letter-spacing: 0.4px;
+    }
+
+    /* Income & Expense Breakdown Grid inside Wallet */
+    .breakdown-section {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .breakdown-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fbbf24;
+      margin-bottom: 6px;
+      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    .wallet-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 12px;
+    .bd-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 3px 0;
+      color: #e2e8f0;
     }
 
-    .stat-box {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 10px;
-      border-radius: 12px;
-    }
-
-    .stat-box span {
-      display: block;
-      font-size: 13px;
-      color: #cbd5e1;
-    }
-
-    .stat-box strong {
-      font-size: 17px;
+    .bd-row.total-row {
+      border-top: 1px dashed rgba(255, 255, 255, 0.25);
+      margin-top: 4px;
+      padding-top: 6px;
+      font-weight: 800;
+      font-size: 15px;
       color: #34d399;
     }
 
-    .stat-box.locked strong {
-      color: #fbbf24;
+    .bd-row.expense-total {
+      border-top: 1px dashed rgba(255, 255, 255, 0.25);
+      margin-top: 4px;
+      padding-top: 6px;
+      font-weight: 800;
+      font-size: 15px;
+      color: #f87171;
+    }
+
+    .jar-summary-bar {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fde68a;
     }
 
     /* 3x2 Menu Grid */
@@ -206,14 +231,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .menu-btn {
       background: var(--card-bg);
       border: none;
       border-radius: 18px;
-      padding: 14px 8px;
+      padding: 13px 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -229,8 +254,8 @@
     }
 
     .menu-icon {
-      font-size: 28px;
-      margin-bottom: 6px;
+      font-size: 26px;
+      margin-bottom: 5px;
     }
 
     .menu-title {
@@ -247,7 +272,7 @@
       color: #fff;
       border: none;
       border-radius: 16px;
-      padding: 14px;
+      padding: 13px;
       font-size: 16px;
       font-weight: 800;
       cursor: pointer;
@@ -271,7 +296,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding-bottom: 10px;
       border-bottom: 2px solid #e2e8f0;
     }
@@ -291,6 +316,43 @@
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
+    }
+
+    /* Quick-Tick Chips */
+    .quick-chips-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #064e3b;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .chip-btn {
+      background: #ecfdf5;
+      border: 1.5px solid #059669;
+      color: #064e3b;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-btn.selected {
+      background: #059669;
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(5, 150, 105, 0.35);
     }
 
     /* Form Controls */
@@ -392,6 +454,7 @@
       font-weight: 800;
       cursor: pointer;
       margin-left: 10px;
+      flex-shrink: 0;
     }
 
     .alert-box {
@@ -581,22 +644,64 @@
           </svg>
         </div>
 
-        <!-- LARGE WALLET CARD -->
+        <!-- LARGE DETAILED WALLET CARD -->
         <div class="wallet-card">
           <div class="wallet-top">
             <span class="wallet-label">💰 නිදහස් ඉතිරි මුදල (Free Wallet)</span>
             <span class="trial-badge" id="trialTimerBadge">Trial: 04:00</span>
           </div>
           <div class="wallet-amount" id="freeWalletDisplay">Rs. 0.00</div>
-          <div class="wallet-stats">
-            <div class="stat-box">
-              <span>මුළු ආදායම (ඉතිරි සහිත)</span>
-              <strong id="totalIncomeDisplay">Rs. 0</strong>
+
+          <!-- INCOME SUMMARY BREAKDOWN -->
+          <div class="breakdown-section">
+            <div class="breakdown-title">📥 ආදායම් විස්තරය (Income Breakdown)</div>
+            <div class="bd-row">
+              <span>• මාසික වැටුප (Monthly Salary):</span>
+              <strong id="bdMonthlySalary">Rs. 0</strong>
             </div>
-            <div class="stat-box locked">
-              <span>🔒 වෙන් කළ සංචිත (Jars)</span>
-              <strong id="lockedJarsDisplay">Rs. 0</strong>
+            <div class="bd-row">
+              <span>• දෛනික වැටුප (Daily Wage):</span>
+              <strong id="bdDailyWage">Rs. 0</strong>
             </div>
+            <div class="bd-row">
+              <span>• අමතර ආදායම් (Extra Income):</span>
+              <strong id="bdExtraIncome">Rs. 0</strong>
+            </div>
+            <div class="bd-row">
+              <span>• ගිය මාසයේ ඉතිරිය (Rollover):</span>
+              <strong id="bdRolloverIncome">Rs. 0</strong>
+            </div>
+            <div class="bd-row total-row">
+              <span>මුළු ආදායම් එකතුව (Total Income):</span>
+              <span id="totalIncomeDisplay">Rs. 0</span>
+            </div>
+          </div>
+
+          <!-- EXPENSE SUMMARY BREAKDOWN -->
+          <div class="breakdown-section">
+            <div class="breakdown-title">📤 වියදම් විස්තරය (Expense Breakdown)</div>
+            <div class="bd-row">
+              <span>• නිවසේ බඩු වියදම (Groceries):</span>
+              <strong id="bdGrocerySpent">Rs. 0</strong>
+            </div>
+            <div class="bd-row">
+              <span>• අමතර/බිල්පත් වියදම් (General):</span>
+              <strong id="bdGeneralSpent">Rs. 0</strong>
+            </div>
+            <div class="bd-row">
+              <span>• ට්‍රිප් / පින්කම් සංචිත වියදම්:</span>
+              <strong id="bdJarSpent">Rs. 0</strong>
+            </div>
+            <div class="bd-row expense-total">
+              <span>මුළු වියදම් එකතුව (Total Spent):</span>
+              <span id="totalExpenseDisplay">Rs. 0</span>
+            </div>
+          </div>
+
+          <!-- LOCKED JARS SUMMARY -->
+          <div class="jar-summary-bar">
+            <span>🔒 වෙන් කළ සංචිත ශේෂය (Locked Jars):</span>
+            <span id="lockedJarsDisplay">Rs. 0</span>
           </div>
         </div>
 
@@ -642,9 +747,9 @@
         <div class="form-group">
           <label>ආදායම් වර්ගය</label>
           <select id="incType">
-            <option value="මාසික වැටුප">මාසික වැටුප (රාජ්‍ය / පෞද්ගලික)</option>
-            <option value="දෛනික වැටුප">දෛනික වැටුප / ව්‍යාපාර</option>
-            <option value="අමතර ආදායම්">අමතර ආදායම් / OT</option>
+            <option value="මාසික වැටුප">මාසික වැටුප (Monthly Salary)</option>
+            <option value="දෛනික වැටුප">දෛනික වැටුප (Daily Wage)</option>
+            <option value="අමතර ආදායම්">අමතර ආදායම් (Extra Income / OT)</option>
           </select>
         </div>
         <div class="form-group">
@@ -682,16 +787,20 @@
         <div class="item-list" id="allocList"></div>
       </div>
 
-      <!-- 3. GROCERY VIEW -->
+      <!-- 3. GROCERY VIEW WITH QUICK-TICK ITEMS -->
       <div id="groceryView" class="sub-view">
         <div class="sub-header">
           <h2>🛒 නිවසේ බඩු ලැයිස්තුව</h2>
           <button class="back-btn" onclick="goHome()">← මුල් පිටුව</button>
         </div>
         <div id="groceryBudgetBanner" class="alert-box"></div>
+
+        <span class="quick-chips-label">✅ ටයිප් නොකර භාණ්ඩය ටික් (Select) කරන්න:</span>
+        <div class="chips-wrap" id="groceryQuickChips"></div>
+
         <div class="form-group">
-          <label>භාණ්ඩයේ නම</label>
-          <input type="text" id="grocName" placeholder="උදා: හාල් 5kg, සීනි 1kg" />
+          <label>තෝරාගත් හෝ වෙනත් භාණ්ඩයේ නම</label>
+          <input type="text" id="grocName" placeholder="ඉහත ටික් කරන්න හෝ ටයිප් කරන්න..." />
         </div>
         <div class="form-group">
           <label>මිල (Rs.)</label>
@@ -704,7 +813,7 @@
         <div class="item-list" id="groceryList"></div>
       </div>
 
-      <!-- 4. EXPENSES & JAR SPENDING VIEW -->
+      <!-- 4. EXPENSES & JAR SPENDING VIEW WITH QUICK-TICK BILLS -->
       <div id="expenseView" class="sub-view">
         <div class="sub-header">
           <h2>💸 අමතර & සංචිත වියදම්</h2>
@@ -714,9 +823,13 @@
           <label>මුදල් ගන්නා අංශය</label>
           <select id="expSource"></select>
         </div>
+
+        <span class="quick-chips-label">✅ බිල්පත් / ප්‍රධාන වියදම් ටික් (Select) කරන්න:</span>
+        <div class="chips-wrap" id="expenseQuickChips"></div>
+
         <div class="form-group">
-          <label>වියදම් විස්තරය</label>
-          <input type="text" id="expDesc" placeholder="උදා: විදුලි බිල / දන්සැල" />
+          <label>තෝරාගත් හෝ වෙනත් වියදම් විස්තරය</label>
+          <input type="text" id="expDesc" placeholder="ඉහත ටික් කරන්න හෝ ටයිප් කරන්න..." />
         </div>
         <div class="form-group">
           <label>මුදල (Rs.)</label>
@@ -795,10 +908,10 @@
           <button class="back-btn no-print" onclick="goHome()">← මුල් පිටුව</button>
         </div>
         <div style="line-height:1.7; font-size:16px; color:#1e293b;">
-          <p><strong>1. ආදායම් ඇතුළත් කිරීම:</strong> ඔබේ මාසික වැටුප, දෛනික ආදායම් හෝ අමතර ආදායම් "1. ආදායම්" වෙතින් ඇතුළත් කරන්න.</p><br>
-          <p><strong>2. වැටුප් බෙදීම (%):</strong> "නිවසේ වියදම්" සඳහා ප්‍රතිශතයක් වෙන් කළ විට, බඩු මිලදී ගැනීම එම මුදල් සීමාවට පමණක් සීමා වේ. "විනෝද චාරිකා" සහ "පින්කම්" මුදල් වියදම් නොකළහොත් ඊළඟ මාසයටත් සංචිත ලෙස එකතු වේ.</p><br>
-          <p><strong>3. නිවසේ බඩු ලැයිස්තුව:</strong> වෙන් කළ බජට් සීමාව ඉක්මවා බඩු ඇතුළත් කළ නොහැකි අතර, මිලදී ගන්නා බඩු වල වටිනාකම පමණක් නිදහස් ඉතිරි මුදලින් අඩු වේ.</p><br>
-          <p><strong>4. මාසික Rollover:</strong> මාසය අවසානයේ "6. වාර්තා & Settings" වෙත ගොස් "ඊළඟ මාසයට ඉතිරිය එකතු කරන්න" එබූ විට, මේ මාසයේ ඉතිරි මුදල ඊළඟ මාසයේ ආරම්භක ඉතිරියට ස්වයංක්‍රීයව එකතු වේ.</p>
+          <p><strong>1. ආදායම් ඇතුළත් කිරීම:</strong> මාසික වැටුප, දෛනික වැටුප, හෝ අමතර ආදායම් වෙන වෙනම ඇතුළත් කළ හැකි අතර මුල් පිටුවේ Wallet එකෙහි ඒවා වෙන වෙනම සාරාංශගත වේ.</p><br>
+          <p><strong>2. පහසු ටික් (Quick-Select Chips):</strong> විදුලි බිල, වතුර බිල, ගෑස්, ඉන්ධන, හාල්, සීනි, පරිප්පු ආදිය ටයිප් නොකර ටික් කර මුදල පමණක් ගසා ඇතුළත් කළ හැක.</p><br>
+          <p><strong>3. වැටුප් බෙදීම (%) සහ සංචිත:</strong> "නිවසේ වියදම්" මගින් බඩු මිලදී ගැනීමේ සීමාව පාලනය වන අතර, "විනෝද චාරිකා" සහ "පින්කම්" මුදල් වියදම් නොකළහොත් ඊළඟ මාසයටත් සංචිත ලෙස එකතු වේ.</p><br>
+          <p><strong>4. මාසික Rollover:</strong> මාසය අවසානයේ "6. වාර්තා & Settings" හරහා Rollover එබූ විට, ඉතිරි මුදල ඊළඟ මාසයේ Rollover ආදායමට ස්වයංක්‍රීයව එකතු වේ.</p>
         </div>
         <div class="btn-row no-print" style="margin-top:16px;">
           <button class="action-btn" onclick="window.print()">🖨 PDF ලෙස Save / Print කරන්න</button>
@@ -836,11 +949,25 @@
       }
     };
 
-    // Slot 01 Master Key Generator Configuration (100% Synced)
+    // Slot 01 Master Key Generator Configuration
     var SLOT_CONFIG = {
       prefix: 'NSC',
       salt: 'SUR_SALT_01_8942'
     };
+
+    // Pre-populated Quick-Tick Items
+    var QUICK_GROCERY_ITEMS = [
+      'හාල් (Rice)', 'සීනි (Sugar)', 'පරිප්පු (Dhal)', 'තේ කොළ (Tea)',
+      'පොල් තෙල් (Oil)', 'කිරි පිටි (Milk)', 'ලුණු (Salt)', 'මිරිස්/තුනපහ',
+      'එළවළු (Vegetables)', 'මාළු / මස්', 'බිත්තර (Eggs)', 'සබන් / දත් බෙහෙත්', 'පාන් / බිස්කට්'
+    ];
+
+    var QUICK_EXPENSE_ITEMS = [
+      '⚡ විදුලි බිල (Electricity)', '💧 වතුර බිල (Water Bill)', '📱 දුරකථන / Internet',
+      '🔥 ගෑස් (LP Gas)', '⛽ ඉන්ධන (Petrol/Diesel)', '💊 බෙහෙත් (Medicine)',
+      '🎓 දරුවන්ගේ පන්ති ගාස්තු', '🏠 නිවාස කුලී / ණය වාරික', '🔧 වාහන සර්විස්/අලුත්වැඩියා',
+      '🙏 දන්සැල් / පින්කම් වියදම්', '🚐 විනෝද චාරිකා වියදම්'
+    ];
 
     var defaultState = {
       carriedForward: 0,
@@ -864,7 +991,7 @@
     var appState = JSON.parse(JSON.stringify(defaultState));
 
     function loadState() {
-      var saved = safeStorage.getItem('nsc_smart_saver_slot01_v1');
+      var saved = safeStorage.getItem('nsc_smart_saver_slot01_v2');
       if (saved) {
         try {
           var parsed = JSON.parse(saved);
@@ -880,8 +1007,45 @@
     }
 
     function saveState() {
-      safeStorage.setItem('nsc_smart_saver_slot01_v1', JSON.stringify(appState));
+      safeStorage.setItem('nsc_smart_saver_slot01_v2', JSON.stringify(appState));
       renderAll();
+    }
+
+    // Build Quick-Tick Chips
+    function renderQuickChips() {
+      var gContainer = document.getElementById('groceryQuickChips');
+      gContainer.innerHTML = '';
+      QUICK_GROCERY_ITEMS.forEach(function(item) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chip-btn';
+        btn.innerText = '☑️ ' + item;
+        btn.onclick = function() {
+          var all = gContainer.querySelectorAll('.chip-btn');
+          all.forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          document.getElementById('grocName').value = item;
+          document.getElementById('grocPrice').focus();
+        };
+        gContainer.appendChild(btn);
+      });
+
+      var eContainer = document.getElementById('expenseQuickChips');
+      eContainer.innerHTML = '';
+      QUICK_EXPENSE_ITEMS.forEach(function(item) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chip-btn';
+        btn.innerText = '☑️ ' + item;
+        btn.onclick = function() {
+          var all = eContainer.querySelectorAll('.chip-btn');
+          all.forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          document.getElementById('expDesc').value = item;
+          document.getElementById('expAmount').focus();
+        };
+        eContainer.appendChild(btn);
+      });
     }
 
     // Navigation
@@ -904,16 +1068,29 @@
       renderAll();
     }
 
-    // Financial Calculations
+    // Detailed Financial Calculations
     function calculateFinances() {
-      var monthlyIncome = appState.incomes.reduce(function(sum, item) { return sum + Number(item.amount); }, 0);
-      var totalAvailablePool = monthlyIncome + Number(appState.carriedForward || 0);
+      var monthlySalary = appState.incomes
+        .filter(function(i) { return i.type === 'මාසික වැටුප'; })
+        .reduce(function(sum, i) { return sum + Number(i.amount); }, 0);
+
+      var dailyWage = appState.incomes
+        .filter(function(i) { return i.type === 'දෛනික වැටුප'; })
+        .reduce(function(sum, i) { return sum + Number(i.amount); }, 0);
+
+      var extraIncome = appState.incomes
+        .filter(function(i) { return i.type === 'අමතර ආදායම්'; })
+        .reduce(function(sum, i) { return sum + Number(i.amount); }, 0);
+
+      var rolloverIncome = Number(appState.carriedForward || 0);
+      var currentMonthIncome = monthlySalary + dailyWage + extraIncome;
+      var totalAvailablePool = currentMonthIncome + rolloverIncome;
 
       var homeCap = 0;
       var totalLockedJars = 0;
 
       appState.allocations.forEach(function(a) {
-        var currentAlloc = Math.round((monthlyIncome * Number(a.pct)) / 100);
+        var currentAlloc = Math.round((currentMonthIncome * Number(a.pct)) / 100);
         if (a.isHome) {
           homeCap = currentAlloc;
         } else {
@@ -935,13 +1112,21 @@
         .filter(function(e) { return e.sourceId !== 'free'; })
         .reduce(function(sum, e) { return sum + Number(e.amount); }, 0);
 
-      var freeWallet = totalAvailablePool - totalGrocerySpent - totalGeneralExpenses - totalAllJarSpent - totalLockedJars;
+      var totalAllExpenses = totalGrocerySpent + totalGeneralExpenses + totalAllJarSpent;
+      var freeWallet = totalAvailablePool - totalAllExpenses - totalLockedJars;
 
       return {
-        monthlyIncome: monthlyIncome,
+        monthlySalary: monthlySalary,
+        dailyWage: dailyWage,
+        extraIncome: extraIncome,
+        rolloverIncome: rolloverIncome,
+        currentMonthIncome: currentMonthIncome,
         totalAvailablePool: totalAvailablePool,
         homeCap: homeCap,
         totalGrocerySpent: totalGrocerySpent,
+        totalGeneralExpenses: totalGeneralExpenses,
+        totalAllJarSpent: totalAllJarSpent,
+        totalAllExpenses: totalAllExpenses,
         totalLockedJars: totalLockedJars,
         freeWallet: freeWallet
       };
@@ -950,8 +1135,24 @@
     // Render UI
     function renderAll() {
       var fin = calculateFinances();
+
+      // Main Free Wallet
       document.getElementById('freeWalletDisplay').innerText = 'Rs. ' + fin.freeWallet.toLocaleString();
+
+      // Income Breakdown
+      document.getElementById('bdMonthlySalary').innerText = 'Rs. ' + fin.monthlySalary.toLocaleString();
+      document.getElementById('bdDailyWage').innerText = 'Rs. ' + fin.dailyWage.toLocaleString();
+      document.getElementById('bdExtraIncome').innerText = 'Rs. ' + fin.extraIncome.toLocaleString();
+      document.getElementById('bdRolloverIncome').innerText = 'Rs. ' + fin.rolloverIncome.toLocaleString();
       document.getElementById('totalIncomeDisplay').innerText = 'Rs. ' + fin.totalAvailablePool.toLocaleString();
+
+      // Expense Breakdown
+      document.getElementById('bdGrocerySpent').innerText = 'Rs. ' + fin.totalGrocerySpent.toLocaleString();
+      document.getElementById('bdGeneralSpent').innerText = 'Rs. ' + fin.totalGeneralExpenses.toLocaleString();
+      document.getElementById('bdJarSpent').innerText = 'Rs. ' + fin.totalAllJarSpent.toLocaleString();
+      document.getElementById('totalExpenseDisplay').innerText = 'Rs. ' + fin.totalAllExpenses.toLocaleString();
+
+      // Locked Jars
       document.getElementById('lockedJarsDisplay').innerText = 'Rs. ' + fin.totalLockedJars.toLocaleString();
 
       var badge = document.getElementById('profileBadge');
@@ -961,7 +1162,7 @@
         badge.innerText = 'NSC';
       }
 
-      // Incomes
+      // Incomes List
       var incList = document.getElementById('incomeList');
       incList.innerHTML = '';
       if (appState.carriedForward > 0) {
@@ -971,18 +1172,18 @@
         incList.innerHTML += '<div class="list-card"><div class="list-card-info"><strong>' + item.desc + ' (' + item.type + ')</strong><small>Rs. ' + Number(item.amount).toLocaleString() + '</small></div><button class="del-btn" onclick="deleteIncome(' + item.id + ')">×</button></div>';
       });
 
-      // Allocations
+      // Allocations List
       var allocList = document.getElementById('allocList');
       allocList.innerHTML = '';
       appState.allocations.forEach(function(a, idx) {
-        var currentVal = Math.round((fin.monthlyIncome * Number(a.pct)) / 100);
+        var currentVal = Math.round((fin.currentMonthIncome * Number(a.pct)) / 100);
         var jarTotal = Number(a.rolloverJar || 0) + currentVal;
         var delBtn = a.isHome ? '' : '<button class="del-btn" onclick="deleteAllocation(\'' + a.id + '\')">×</button>';
         var extraInfo = a.isHome ? 'බඩු මිලදී ගැනීමේ සීමාව: Rs. ' + currentVal.toLocaleString() : '🔒 මුළු සංචිතය: Rs. ' + jarTotal.toLocaleString();
         allocList.innerHTML += '<div class="list-card"><div class="list-card-info"><strong>' + a.name + '</strong><small>' + extraInfo + '</small></div><div style="display:flex;align-items:center;"><input type="number" value="' + a.pct + '" onchange="updateAllocPct(' + idx + ', this.value)" style="width:75px;padding:8px;text-align:center;" />' + delBtn + '</div></div>';
       });
 
-      // Groceries
+      // Groceries List
       var banner = document.getElementById('groceryBudgetBanner');
       var remainingGroc = fin.homeCap - fin.totalGrocerySpent;
       if (fin.homeCap === 0) {
@@ -1002,7 +1203,7 @@
         grocList.innerHTML += '<div class="list-card"><div class="list-card-info"><strong>' + g.name + '</strong><small>Rs. ' + Number(g.price).toLocaleString() + '</small></div><button class="del-btn" onclick="deleteGrocery(' + g.id + ')">×</button></div>';
       });
 
-      // Expenses
+      // Expenses Dropdown & List
       var expSource = document.getElementById('expSource');
       expSource.innerHTML = '<option value="free">නිදහස් ඉතිරි මුදලින් (Free Wallet)</option>';
       appState.allocations.forEach(function(a) {
@@ -1070,6 +1271,7 @@
       appState.groceries.push({ id: Date.now(), name: name, price: price });
       document.getElementById('grocName').value = '';
       document.getElementById('grocPrice').value = '';
+      document.querySelectorAll('#groceryQuickChips .chip-btn').forEach(function(b) { b.classList.remove('selected'); });
       saveState();
     }
 
@@ -1088,6 +1290,7 @@
       appState.expenses.push({ id: Date.now(), sourceId: srcId, sourceName: srcName, desc: desc, amount: amt });
       document.getElementById('expDesc').value = '';
       document.getElementById('expAmount').value = '';
+      document.querySelectorAll('#expenseQuickChips .chip-btn').forEach(function(b) { b.classList.remove('selected'); });
       saveState();
     }
 
@@ -1166,7 +1369,7 @@
       var fin = calculateFinances();
       appState.allocations.forEach(function(a) {
         if (!a.isHome) {
-          var cur = Math.round((fin.monthlyIncome * Number(a.pct)) / 100);
+          var cur = Math.round((fin.currentMonthIncome * Number(a.pct)) / 100);
           var spent = appState.expenses.filter(function(e) { return e.sourceId === a.id; }).reduce(function(s, e) { return s + Number(e.amount); }, 0);
           a.rolloverJar = Math.max(0, Number(a.rolloverJar || 0) + cur - spent);
         }
@@ -1183,16 +1386,25 @@
       if (!phone) { alert('කරුණාකර WhatsApp දුරකථන අංකය ඇතුළත් කරන්න.'); return; }
       if (phone.startsWith('0')) phone = '94' + phone.substring(1);
       var fin = calculateFinances();
-      var msg = '*NSC Smart Saver - මාසික වාර්තාව*\n' +
+      var msg = '*NSC Smart Saver - සම්පූර්ණ වාර්තාව*\n' +
                 'Created by MA Suranga\n\n' +
-                '💰 මුළු ආදායම: Rs. ' + fin.totalAvailablePool.toLocaleString() + '\n' +
-                '🛒 බඩු වියදම: Rs. ' + fin.totalGrocerySpent.toLocaleString() + '\n' +
-                '🔒 වෙන් කළ සංචිත: Rs. ' + fin.totalLockedJars.toLocaleString() + '\n' +
-                '✅ නිදහස් ඉතිරිය: Rs. ' + fin.freeWallet.toLocaleString();
+                '📥 *ආදායම් විස්තරය:*\n' +
+                '• මාසික වැටුප: Rs. ' + fin.monthlySalary.toLocaleString() + '\n' +
+                '• දෛනික වැටුප: Rs. ' + fin.dailyWage.toLocaleString() + '\n' +
+                '• අමතර ආදායම්: Rs. ' + fin.extraIncome.toLocaleString() + '\n' +
+                '• ගිය මාසයේ ඉතිරිය: Rs. ' + fin.rolloverIncome.toLocaleString() + '\n' +
+                '💰 *මුළු ආදායම:* Rs. ' + fin.totalAvailablePool.toLocaleString() + '\n\n' +
+                '📤 *වියදම් විස්තරය:*\n' +
+                '• නිවසේ බඩු: Rs. ' + fin.totalGrocerySpent.toLocaleString() + '\n' +
+                '• අමතර/බිල්පත්: Rs. ' + fin.totalGeneralExpenses.toLocaleString() + '\n' +
+                '• ට්‍රිප්/පින්කම් සංචිත: Rs. ' + fin.totalAllJarSpent.toLocaleString() + '\n' +
+                '💸 *මුළු වියදම:* Rs. ' + fin.totalAllExpenses.toLocaleString() + '\n\n' +
+                '🔒 වෙන් කළ සංචිත ශේෂය: Rs. ' + fin.totalLockedJars.toLocaleString() + '\n' +
+                '✅ *නිදහස් ඉතිරි මුදල:* Rs. ' + fin.freeWallet.toLocaleString();
       window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
     }
 
-    // Exact Cryptographic Hash Verification (Matches Master Key Generator Slot 01)
+    // Cryptographic Hash Verification (Matches Master Key Generator Slot 01)
     function computeExpectedCryptoKey(rawReqId) {
       var cleanNum = rawReqId.replace(/\D/g, '');
       if (!cleanNum) return '';
@@ -1212,7 +1424,7 @@
     }
 
     // 4-Minute Trial Timer
-    var secondsLeft = 240; // 4 minutes
+    var secondsLeft = 240;
     function startTrialTimer() {
       if (appState.unlocked) {
         document.getElementById('trialTimerBadge').innerText = '✅ Active';
@@ -1256,6 +1468,7 @@
     }
 
     // Init
+    renderQuickChips();
     loadState();
     renderAll();
     startTrialTimer();
